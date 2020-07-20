@@ -1,0 +1,35 @@
+.title {
+  font-weight: bold;
+  color: cyan;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.js-number {
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  margin: 10px;
+}
+.prueba,
+.reset {
+  background-color: aquamarine;
+  color: white;
+  font-weight: bold;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  border-color: aquamarine;
+  margin: 5px;
+}
+.introduce {
+  color: cyan;
+  font-weight: bold;
+  font-size: 18px;
+}
+.js-clue,
+.js-counter {
+  font-weight: bold;
+}

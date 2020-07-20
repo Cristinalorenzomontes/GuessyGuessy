@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Evaluación intermedia-Cristina Lorenzo Montes</title>
+    <link href="/css/reset.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="page">
+    <header>
+      <h1 class="title">Adivina el número</h1>
+    </header>
+    <main>
+      <form class="form">
+        <label for="number" class="introduce">Introduce aquí tu número</label>
+        <input
+          class="js-number"
+          name="number"
+          type="text"
+          id="number"
+          placeholder="0"
+        />
+        <input class="js-submit prueba" type="submit" value="Prueba" />
+        <input class="js-reset reset" type="reset" />
+      </form>
+      <p>
+        Pista: <span class="js-clue">Escribe al número y dale a Prueba</span>
+      </p>
+      <p>Número de intentos: <span class="js-counter">0</span></p>
+    </main>
+    <script type="text/javascript" src="/js/main.js"></script>
+  </body>
+</html>
