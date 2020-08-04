@@ -7,21 +7,23 @@
     <link href="/css/style.css" rel="stylesheet" />
   </head>
   <body class="page">
-    <header>
+    <header class="page">
       <h1 class="title">Adivina el número</h1>
     </header>
     <main>
       <form class="form">
-        <label for="number" class="introduce">Introduce aquí tu número</label>
-        <input
-          class="js-number"
-          name="number"
-          type="text"
-          id="number"
-          placeholder="0"
-        />
-        <input class="js-submit prueba" type="submit" value="Prueba" />
-        <input class="js-reset reset" type="reset" />
+        <div class="container">
+          <label for="number" class="introduce">Introduce aquí tu número</label>
+          <input
+            class="js-number"
+            name="number"
+            type="text"
+            id="number"
+            placeholder="0"
+          />
+          <input class="js-submit prueba" type="submit" value="Prueba" />
+          <input class="js-reset reset" type="reset" />
+        </div>
       </form>
       <p>
         Pista: <span class="js-clue">Escribe el número y dale a Prueba</span>
