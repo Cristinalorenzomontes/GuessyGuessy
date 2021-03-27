@@ -1,72 +1,92 @@
-"use strict";
-//Función para conseguir el número random
+'use strict';
+
+const button = document.querySelector('.js-btn');
+const replay = document.querySelector('.try-again-btn');
+const track = document.querySelector('.js-track');
+const attempts = document.querySelector('.js-attempts');
+const inputValue = document.querySelector('.js-number');
+const gyphOne = document.querySelector('.giphy-embed-one');
+const gyphTwo = document.querySelector('.giphy-embed-two');
+
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
 }
+const randomNumber = getRandomNumber(100);
+console.log('My random number is', randomNumber);
 
-//Constantes
-const randomNumber = getRandomNumber(100); //Constante para almacenar el número aleatorio
-console.log("Mi número aleatorio es: ", randomNumber); //Logueamos el número para dejarlo guardado en la consola
+function updateTrack() {
+  let feedback = '';
+  const value = parseInt(inputValue.value);
+  console.log(value);
+  if (isNaN(value)) {
+    feedback = 'You must introduce a number';
+  } else {
+    if (value >= 1 && value <= 100) {
+      if (value > randomNumber) {
+        feedback = 'Clue: Too high';
+      } else if (value < randomNumber) {
+        feedback = 'Clue: Too low';
+      } else if (value === randomNumber) {
+        feedback = 'You won!';
+        gyphGenerator();
+        replay.classList.remove('hidden');
+        gyphTwo.classList.add('hidden');
+        gyphOne.classList.add('hidden');
+      }
+    } else {
+      feedback = 'Clue: The number must be between 1 and 100.';
+    }
+    updateCounter();
+  }
 
-// handle event
-const submitBtn = document.querySelector(".js-submit");
-const number = document.querySelector(".js-number");
-const clue = document.querySelector(".js-clue");
-const counter = document.querySelector(".js-counter");
-const reset = document.querySelector(".js-reset");
-
-function handleSubmitBtn(ev) {
-  ev.preventDefault();
-  updateClue();
-  updateCounter();
+  printFeedback(feedback);
 }
 
-function updateClue() {
-  const numberValue = parseInt(number.value);
-  /*Hacemos parseInt para convertir el número procedente del html en número, 
-    ya que al venir del html, se procesa como texto*/
-  if (numberValue <= 0 || numberValue > 100) {
-    console.log("El número debe ser mayor de 0 y menor de 100");
-    clue.innerHTML = "El número debe ser mayor de 0 y menor de 100";
-  } else if (numberValue < randomNumber) {
-    console.log("Es menor");
-    clue.innerHTML = "Demasiado bajo";
-  } else if (numberValue > randomNumber) {
-    console.log("Es mayor");
-    clue.innerHTML = "Demasiado alto";
-  } else if (numberValue === randomNumber) {
-    console.log("Es igual");
-    clue.innerHTML = "Has ganado campeona!!!";
-  } else if ((numberValue = undefined)) {
-    console.log("Está vacío");
-    clue.innerHTML = "Pero inténtalo con algún número Maricarmen!!!";
+function printFeedback(feedback) {
+  track.innerHTML = feedback;
+}
+
+let attemptsTrying = 0;
+
+function updateCounter() {
+  attemptsTrying = attemptsTrying + 1;
+  attempts.innerHTML = attemptsTrying;
+  if (attemptsTrying > 2){
+    gyphOne.classList.remove('hidden');
+  } if (attemptsTrying > 4){
+    gyphOne.classList.add('hidden');
+    gyphTwo.classList.remove('hidden');
   }
 }
 
-function updateCounter() {
-  let counterAttempts = parseInt(counter.innerHTML);
-  console.log(counterAttempts);
-  counter.innerHTML = counterAttempts + 1;
+function reload() {
+  location.reload();
 }
 
-//En un código laboral, borraríamos los console.log, pero aquí los vamos a dejar para poder jugar con ellos más adelante.
-submitBtn.addEventListener("click", handleSubmitBtn); //No ponemos paréntesis para ejecutar la función porque queremos que se ejecute con la función manejadora a través del navegador
-
-//Creamos función para el resetButton
-function resetButton() {
-  let counterAttempts = parseInt(counter.innerHTML);
-  console.log(`Soy un reset reshulón`);
-  counter.innerHTML = counterAttempts = 0;
-  clue.innerHTML = "Escribe al número y dale a Prueba";
-  getRandomNumber(100);
+function handleSubmitEnter(ev) {
+  if (ev.key === 'Enter') {
+    ev.preventDefault();
+    updateTrack();
+  }
 }
 
-//Further challenges
-// Then you can improve the game as you please, here you have some ideas:
+button.addEventListener('click', updateTrack);
+replay.addEventListener('click', reload);
+inputValue.addEventListener('keydown', handleSubmitEnter);
 
-// Add new feedback when the number is bigger than 100 or smaller than 0.
-// Manage when the user hits the button and the input is empty.
-// Make the input work when hitting enter key.
-// Add a reset button that cleans the input, the counter, writes the initial feedback and generates a new random number to play again!
-// Whatever you want!
-reset.addEventListener("click", resetButton);
+const api_key = "dc6zaTOxFJmzC"
+
+function gyphGenerator () {
+  fetch(`http://api.giphy.com/v1/gifs/search?q=win&api_key=${api_key}`)
+  .then(response => response.json())
+    .then(json => {
+      json.data
+        .map(gif => gif.images.fixed_height.url)
+        .forEach(url => {
+          let img = document.createElement('img')
+          img.src = url
+          document.body.appendChild(img)
+        })
+    })
+    .catch(error => document.body.appendChild = error)
+}

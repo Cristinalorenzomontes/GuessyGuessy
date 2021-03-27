@@ -1,42 +1,33 @@
-.page {
-  text-align: center;
-  background-color: papayawhip;
-}
-.container {
-  align-self: center;
-}
-.title {
-  font-weight: bold;
-  color: cyan;
+.btn {
+  background-color: rgb(70, 195, 240);
+  color: grey;
+  width: auto;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  font-family: 'Architects Daughter', cursive;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
+label {
+  font-size: x-large;
 }
-.js-number {
-  width: 50px;
-  height: 30px;
-  border-radius: 5px;
-  margin: 10px;
+
+.hidden {
+  display: none;
 }
-.prueba,
-.reset {
-  background-color: aquamarine;
-  color: white;
-  font-weight: bold;
-  width: 100px;
-  height: 30px;
-  border-radius: 5px;
-  border-color: aquamarine;
-  margin: 5px;
+
+body {
+  background-color: rgb(111, 10, 71);
+  text-align: center;
+  color: rgb(218, 167, 167);
 }
-.introduce {
-  color: cyan;
-  font-weight: bold;
-  font-size: 18px;
+
+.main {
+  font-family: 'Architects Daughter', cursive;
 }
-.js-clue,
-.js-counter {
-  font-weight: bold;
+
+h1 {
+  padding-top: 2em;
+  font-family: 'Indie Flower';
+  font-size: 2em;
 }

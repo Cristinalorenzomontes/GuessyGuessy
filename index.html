@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <title>Evaluación intermedia-Cristina Lorenzo Montes</title>
-    <link href="/css/reset.css" rel="stylesheet" />
-    <link href="/css/style.css" rel="stylesheet" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Guess the number</title>
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Indie+Flower&display=swap" rel="stylesheet">
   </head>
   <body class="page">
-    <header class="page">
-      <h1 class="title">Adivina el número</h1>
-    </header>
-    <main>
-      <form class="form">
-        <div class="container">
-          <label for="number" class="introduce">Introduce aquí tu número</label>
-          <input
-            class="js-number"
-            name="number"
-            type="text"
-            id="number"
-            placeholder="0"
-          />
-          <input class="js-submit prueba" type="submit" value="Prueba" />
-          <input class="js-reset reset" type="reset" />
-        </div>
-      </form>
-      <p>
-        Pista: <span class="js-clue">Escribe el número y dale a Prueba</span>
-      </p>
-      <p>Número de intentos: <span class="js-counter">0</span></p>
-    </main>
-    <script type="text/javascript" src="/js/main.js"></script>
+      <h1 class="title">Guess the number</h1>
+      <div class="main">
+          <form action="">
+              <label for="number">Introduce here your number:</label>
+              <input type="number" id="number" name="number" class="js-number" placeholder="Ex.: 7">
+              <button type="button" class="btn js-btn">TRY</button>
+              <button type="button" class="btn js-btn try-again-btn hidden">Play again</button>
+          </form>
+
+          <div>
+              <p class="js-track">Clue: Write the number and click TRY</p>
+              <p> Attemps: <span class="js-attempts">0</span></p>
+          </div>
+      </div>
+
+    <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>
